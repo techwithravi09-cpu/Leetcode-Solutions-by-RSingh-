@@ -1,0 +1,13 @@
+        n=len(cardPoints)
+        if n==k:
+            return sum(cardPoints)
+        left_sum=sum(cardPoints[:k])
+        right_sum=0
+        maxi=left_sum
+        right_index=n-1
+        for i in range(k-1,-1,-1):
+            left_sum-=cardPoints[i]
+            right_sum+=cardPoints[right_index]
+            maxi=max(maxi,left_sum+right_sum)
+            right_index-=1
+        return maxi
