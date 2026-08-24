@@ -1,0 +1,9 @@
+class Solution(object):
+    def maxDepth(self, root):
+        def solve(root):
+            if root  is None:
+                return 0
+            left_height=solve(root.left)
+            right_height=solve(root.right)
+            return 1 +max(left_height,right_height)
+        return solve(root)
