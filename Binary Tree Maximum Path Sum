@@ -1,0 +1,19 @@
+class Solution(object):
+    def maxPathSum(self, root):
+
+        maxi=[float("-inf")]
+
+
+        def solve(root):
+            if root is None:
+                return 0
+            left_sum=solve(root.left)
+            if left_sum<0:
+                left_sum=0
+            right_sum=solve(root.right)
+            if right_sum<0:
+                right_sum=0
+            maxi[0]=max(maxi[0],left_sum+root.val+right_sum)
+            return root.val + max(left_sum,right_sum)
+        solve(root)
+        return maxi[0]
